@@ -1,9 +1,11 @@
 package demo;
 
+import java.awt.image.ColorConvertOp;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class BmpController {
 	/**
@@ -42,16 +44,14 @@ public class BmpController {
 	public static void reverseBmpColor(String from, String to) throws IOException {
 		File f = new File(from);
 		File fa = new File(to);
-		FileInputStream s = new FileInputStream(f);
 		FileOutputStream sa = new FileOutputStream(fa);
-		byte[] b = new byte[(int) f.length()];
-		s.read(b);
-		for (int i = 0; i < f.length(); i++) {
-			if (i > 54)
-				b[i] = (byte) ((byte) 0xff - b[i]);
+		byte[] b = Files.readAllBytes(Paths.get(from));
+		for (int i = 55; i < f.length(); i++) {// bmp文件头大小为54
+			// b[i] = (byte) ((byte) 0xff - b[i]);
+			b[i] = (byte) (~b[i]);
 		}
 		sa.write(b);
 		sa.close();
-		s.close();
 	}
+
 }

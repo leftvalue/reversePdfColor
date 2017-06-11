@@ -1,6 +1,8 @@
 package demo;
 
 import java.io.File;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Center {
 	/**
@@ -10,7 +12,17 @@ public class Center {
 	 * @throws Exception
 	 */
 	public static void main(String args[]) throws Exception {
-		PdfController.handlePath(new File(args[0]));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH时mm分ss秒");
+		String path = args[0];
+		File file = new File(path);
+		if (file.isDirectory()) {
+			System.out.println("正在处理指定目录 " + LocalDateTime.now().format(formatter));
+			PdfController.handlePath(file);
+		} else if (file.isFile() && path.endsWith(".pdf")) {
+			System.out.println("正在处理指定文件 " + LocalDateTime.now().format(formatter));
+			PdfController.reversePdf(file);
+		}
+		System.out.println("Reverse completed  " + LocalDateTime.now().format(formatter));
 		return;
 	}
 }
