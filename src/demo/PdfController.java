@@ -1,12 +1,15 @@
 package demo;
 
 import java.io.*;
+
+import model.Unit;
+
 /**
  * 
  * @author linxi 2017-06-10 Sat.
  */
 public class PdfController {
-	
+
 	/**
 	 * 递归处理指定目录下的所有pdf文件
 	 * 
@@ -50,11 +53,12 @@ public class PdfController {
 			System.out.println("创建临时图片储存目录 : " + tempPath);
 		}
 		int count = Pdf2Imgs.pdf2Pic(file.getAbsolutePath(), tempPath);
-		BmpController.reverseColorOfAllImg(count, tempPath);
-		Imgs2Pdf.createPdf(count, tempPath, name + "_反色");
-		for (int i = 0; i < count; i++) {
-			new File(tempDir + "/" + i + ".bmp").delete();
-		}
-		System.out.println("删除" + tempPath + "中的临时图片文件");
+		Unit.UnitMaker(count, tempPath, name);
+		// BmpController.reverseColorOfAllImg(count, tempPath);
+		// Imgs2Pdf.createPdf(count, tempPath, name + "_反色");
+		// for (int i = 0; i < count; i++) {
+		// new File(tempPath + "/" + i + ".bmp").delete();
+		// }
+		// System.out.println("删除" + tempPath + "中的临时图片文件");
 	}
 }

@@ -1,6 +1,5 @@
 package demo;
 
-import java.awt.image.ColorConvertOp;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
