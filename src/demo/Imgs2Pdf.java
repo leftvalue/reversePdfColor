@@ -45,6 +45,7 @@ public class Imgs2Pdf {
 		int w = sourceImg.getWidth();
 		int h = sourceImg.getHeight();
 		Document doc = new Document(new Rectangle(w, h));
+		doc.setMargins(0, 0, 0, 0);
 		System.out.println("设置pdf大小" + w + "x" + h);
 		fileInputStream.close();
 		try {
