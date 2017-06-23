@@ -54,11 +54,5 @@ public class PdfController {
 		}
 		int count = Pdf2Imgs.pdf2Pic(file.getAbsolutePath(), tempPath);
 		Unit.UnitMaker(count, tempPath, name);
-		// BmpController.reverseColorOfAllImg(count, tempPath);
-		// Imgs2Pdf.createPdf(count, tempPath, name + "_反色");
-		// for (int i = 0; i < count; i++) {
-		// new File(tempPath + "/" + i + ".bmp").delete();
-		// }
-		// System.out.println("删除" + tempPath + "中的临时图片文件");
 	}
 }

@@ -14,6 +14,7 @@ public class BmpController {
 	 * @param path
 	 * @throws IOException
 	 */
+	@Deprecated
 	public static void reverseColorOfAllImg(int total, String path) throws IOException {
 		File file = new File(path);
 		if (!file.exists() || !file.isDirectory()) {

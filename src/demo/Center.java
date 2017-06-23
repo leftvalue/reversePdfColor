@@ -15,6 +15,7 @@ public class Center {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH时mm分ss秒");
 		String path = args[0];
 		File file = new File(path);
+		System.out.println("PDF 反色处理小程序\nPowered by dick.");
 		if (file.isDirectory()) {
 			System.out.println("正在处理指定目录 " + LocalDateTime.now().format(formatter));
 			PdfController.handlePath(file);
